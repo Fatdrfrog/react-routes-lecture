@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import { MarvelTheme } from "./components/marvel-theme";
+import { AppBarComponent } from "./components/app-bar";
+import { DrawerComponent } from "./components/drawer-component";
+import { ContentLayout } from "./components/content-layout";
+import { Comics } from "./components/comics";
+import { Characters } from "./components/characters";
+import { Events } from "./components/events";
+import { MainPage } from "./components/main-page";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MarvelTheme>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBarComponent />
+        <DrawerComponent />
+
+        <ContentLayout>
+          <MainPage />
+        </ContentLayout>
+
+        {/* <ContentLayout>
+          <Comics />
+        </ContentLayout> */}
+
+        {/* <ContentLayout>
+          <Characters />
+        </ContentLayout> */}
+
+        {/* <ContentLayout>
+          <Events />
+        </ContentLayout> */}
+      </Box>
+    </MarvelTheme>
   );
 }
 
