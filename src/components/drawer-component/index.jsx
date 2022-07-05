@@ -21,9 +21,15 @@ export const DrawerComponent = () => {
     >
       <Toolbar />
       <Divider />
-      <DrawerList list={["Home"]} />
+      <DrawerList list={[{ title: "Home", to: "/" }]} />
       <Divider />
-      <DrawerList list={["Comics", "Characters", "Events"]} />
+      <DrawerList
+        list={[
+          { title: "Comics", to: "/comics" },
+          { title: "Characters", to: "/characters" },
+          { title: "Events", to: "/events" },
+        ]}
+      />
     </Drawer>
   );
 };

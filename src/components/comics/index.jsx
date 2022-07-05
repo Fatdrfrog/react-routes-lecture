@@ -1,32 +1,14 @@
-import { useState, useEffect } from "react";
-import md5 from "md5";
-import axios from "axios";
 import { Grid } from "@mui/material";
 import { CardItem } from "../card-item";
+import { Outlet, useParams } from "react-router-dom";
+import { useSynchronizeItems } from "../../hooks/useSynchronizeItems";
 
 export const Comics = () => {
-  const [comics, setComics] = useState([]);
+  const { items: comics } = useSynchronizeItems({ type: "comics" });
 
-  useEffect(() => {
-    getAllComics();
-  }, []);
+  const { comicsID } = useParams();
 
-  const getAllComics = () => {
-    axios
-      .get(
-        `http://gateway.marvel.com/v1/public/comics?ts=${
-          process.env.REACT_APP_TS
-        }&apikey=${process.env.REACT_APP_PUBLIC_KEY}&hash=${md5(
-          process.env.REACT_APP_TS +
-            process.env.REACT_APP_PRIVATE_KEY +
-            process.env.REACT_APP_PUBLIC_KEY
-        )}`
-      )
-      .then((res) => res.data)
-      .then((res) => {
-        setComics(res.data.results);
-      });
-  };
+  if (comicsID) return <Outlet />;
 
   if (!comics || comics.length === 0) {
     return <>comics not found -_-</>;

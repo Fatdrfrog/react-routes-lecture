@@ -6,6 +6,8 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
+import { Link } from "react-router-dom";
+
 export const CardItem = ({ item }) => {
   return (
     <Box sx={{ minHeight: 340, margin: "1rem" }}>
@@ -26,7 +28,9 @@ export const CardItem = ({ item }) => {
             />
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small" component={Link} to={`${item.id}`}>
+              Learn More
+            </Button>
           </CardActions>
         </>
       </Card>
